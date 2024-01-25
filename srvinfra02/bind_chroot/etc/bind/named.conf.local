@@ -1,0 +1,42 @@
+include "/etc/bind/rndc.key";
+
+controls { 
+  inet 127.0.0.1 port 953 allow { localhost; } keys { "rndc-key"; };
+};
+
+acl "redeinterna" {
+  192.168.1.0/24;
+  127.0.0.1;
+};
+
+acl "redeexterna" {
+  10.0.2.0/24;
+};
+
+view "externa" {
+  match-clients { redeexterna; };
+  zone "labrc.edu.br" {
+    type slave;
+    file "db.labrc.edu.br.externa";
+    masters { 192.168.1.251; };
+  };
+  zone 2.0.10.in-addr.arpa {
+    type slave;
+    file "rev.labrc.edu.br.externa";
+    masters { 192.168.1.251; };
+  };
+};
+
+view "interna" {
+  match-clients { redeinterna; };
+  zone "labrc.edu.br" {
+    type slave;
+    file "db.labrc.edu.br.interna";
+    masters { 192.168.1.251; };
+  };
+  zone 1.168.192.in-addr.arpa {
+    type slave;
+    file "rev.labrc.edu.br.interna";
+    masters { 192.168.1.251; };
+  };
+};

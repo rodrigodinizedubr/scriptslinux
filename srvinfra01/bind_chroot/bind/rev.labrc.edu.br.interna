@@ -1,0 +1,19 @@
+$TTL 7200 ; default para registros sem TTL
+;
+@	IN	SOA	ns1.labrc.edu.br.	operador.labrc.edu.br. (
+	2024012401 ; serial
+	8h ; refresh
+	1h ; retry
+	3d ; expire
+	3h ; negative caching TTL
+);
+;
+@	IN	NS	ns1.labrc.edu.br.
+@	IN	NS	ns2.labrc.edu.br.
+ns1	IN	A	192.168.1.251
+ns2	IN	A	192.168.1.252
+254	IN	PTR	srvfire01.labrc.edu.br.
+251	IN	PTR	srvinfra01.labrc.edu.br.	
+252	IN	PTR	srvinfra02.labrc.edu.br.
+253	IN	PTR	srvaplic01.labrc.edu.br.
+100	IN	PTR	wks01.labrc.edu.br.
