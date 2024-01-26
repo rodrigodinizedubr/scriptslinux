@@ -6,34 +6,33 @@ controls {
 
 acl "redeinterna" {
   192.168.1.0/24;
-  10.0.0.0/24;
   127.0.0.1;
 };
 
 acl "redeexterna" {
-  200.50.100.0/24;
+  10.0.2.0/24;
 };
 
 view "externa" {
   match-clients { redeexterna; };
-  zone "asf.com" {
+  zone "labrc.edu.br" {
     type master;
-    file "db.asf.externa";
+    file "db.labrc.edu.br.externa";
   };
-  zone 100.50.200.in-addr.arpa {
+  zone 2.0.10.in-addr.arpa {
     type master;
-    file "rev.asf.externa";
+    file "rev.labrc.edu.br.externa";
   };
 };
 
 view "interna" {
   match-clients { redeinterna; };
-  zone "asf.com" {
+  zone "labrc.edu.br" {
     type master;
-    file "db.asf.interna";
+    file "db.labrc.edu.br.interna";
   };
   zone 1.168.192.in-addr.arpa {
     type master;
-    file "rev.asf.interna";
+    file "rev.labrc.edu.br.interna";
   };
 };

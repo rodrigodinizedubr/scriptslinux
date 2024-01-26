@@ -1,0 +1,24 @@
+$TTL 7200 ; default para registros sem TTL
+;
+@	IN	SOA	ns1.labrc.edu.br.	operador.labrc.edu.br. (
+	2024012401 ; serial
+	8h ; refresh
+	1h ; retry
+	3d ; expire
+	3h ; negative caching TTL
+);
+;
+@		IN	NS	ns1.labrc.edu.br.
+@		IN	NS	ns2.labrc.edu.br.
+@		IN	MX	10 mail.labrc.edu.br.
+@		IN	A	10.0.2.15
+@		IN	TXT	"v=spf1 a mx ip4:10.0.2.16 -all"
+ns1		IN	A	10.0.2.15
+ns2		IN	A	10.0.2.16
+www		IN	A	10.0.2.15
+ftp		IN	CNAME	www
+mail		IN	A	10.0.2.16
+smtp		IN	CNAME	mail
+pop		IN	CNAME	mail
+imap		IN	CNAME	mail
+webmail		IN	CNAME	mail
